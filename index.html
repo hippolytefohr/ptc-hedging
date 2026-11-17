@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Couverture du rachat PTC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap">
+<style>
+/* Layout : un poste de trésorier. Paramètres à gauche, résultat et tableau à droite, graphique en pleine largeur dessous. */
+:root{
+  --bg:#f3f5f6; --panel:#ffffff; --ink:#15212b; --muted:#5b6b78; --line:#d9e0e5;
+  --accent:#0f6b70; --accent-soft:#e1f0ef;
+  --s-none:#8a96a0; --s-fwd:#0f6b70; --s-opt:#b26b12; --s-dcf:#3a4fa3;
+  --good:#1d7a45; --bad:#b4372f; --good-bg:#e4f3ea; --bad-bg:#f8e6e4;
+  --f-display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+/* Thème clair uniquement, choisi volontairement : fond blanc dans tous les cas. */
+:root{color-scheme:light}
+input[type=range]{-webkit-appearance:none;appearance:none;height:22px;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:var(--line)}
+input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:var(--line)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);border:2px solid var(--panel);margin-top:-6px;box-shadow:0 0 0 1px var(--accent)}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--accent);border:2px solid var(--panel);box-shadow:0 0 0 1px var(--accent)}
+*{box-sizing:border-box}
+body{background:#ffffff;color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-block:28px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:20px}
+header{display:grid;gap:6px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:600;font-size:clamp(26px,4vw,38px);line-height:1.1;margin:0;text-wrap:balance}
+.lead{max-width:72ch;color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:320px 1fr;gap:20px;align-items:start}
+@media (max-width:880px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px;min-width:0}
+h2{font-family:var(--f-display);font-weight:600;font-size:18px;margin:0 0 12px}
+.field{display:grid;gap:4px;margin-bottom:14px}
+.field label{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--muted)}
+.field label b{font-family:var(--f-mono);font-weight:500;color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+input[type=number]{width:100%;font:inherit;font-family:var(--f-mono);padding:6px 8px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink)}
+input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hint{font-size:12px;color:var(--muted);margin:0}
+.derived{border-top:1px solid var(--line);padding-top:12px;display:grid;gap:6px;font-size:13px}
+.derived div{display:flex;justify-content:space-between;gap:8px}
+.derived span:last-child{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.toggle{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:6px;cursor:pointer;background:var(--bg);font-size:14px;width:100%;color:var(--ink);font-family:inherit;text-align:left}
+.toggle[aria-pressed="true"]{border-color:var(--bad);background:var(--bad-bg)}
+.toggle .dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--muted);flex:none}
+.toggle[aria-pressed="true"] .dot{background:var(--bad);border-color:var(--bad)}
+.right{display:grid;gap:20px;min-width:0}
+.verdict{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:640px){.verdict{grid-template-columns:repeat(2,1fr)}}
+.card{border:1px solid var(--line);border-radius:6px;padding:12px;background:var(--panel);display:grid;gap:2px;border-top:4px solid var(--c)}
+.card .name{font-size:13px;color:var(--muted)}
+.card .val{font-family:var(--f-mono);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
+.card .delta{font-family:var(--f-mono);font-size:12px;font-variant-numeric:tabular-nums}
+.pos{color:var(--good)} .neg{color:var(--bad)}
+.tablebox{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+th{font-size:12px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+td{font-family:var(--f-mono)}
+td:first-child{font-family:var(--f-body)}
+td.best{background:var(--good-bg)} td.worst{background:var(--bad-bg)}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:8px;background:var(--c);vertical-align:middle}
+.chartbox{position:relative}
+svg{width:100%;height:auto;display:block}
+svg text{fill:var(--muted);font-family:var(--f-mono);font-size:11px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;margin-top:8px}
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:880px){.notes{grid-template-columns:1fr}}
+.notes p{margin:0 0 8px;max-width:65ch}
+.notes h3{font-family:var(--f-display);font-size:16px;margin:0 0 6px}
+code{font-family:var(--f-mono);font-size:13px;background:var(--accent-soft);padding:1px 5px;border-radius:3px}
+footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+footer a{color:var(--accent)}
+@media (prefers-reduced-motion:no-preference){.line{transition:d .2s}}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Cas pratique · trésorerie · risque de change</span>
+    <h1>Couvrir 22,6 Md$ payables au closing : quelle stratégie pour Schneider Electric ?</h1>
+    <p class="lead">Schneider Electric rachète PTC pour 22,6 Md$ en cash, avec un closing attendu d'ici au T3 2027. Le prix est fixé en dollars, le groupe raisonne en euros, et l'opération peut encore échouer. Cet outil compare quatre façons de gérer ce risque. Tous les paramètres sont modifiables.</p>
+  </header>
+
+  <div class="grid">
+    <section class="panel" aria-labelledby="h-param">
+      <h2 id="h-param">Paramètres de marché</h2>
+      <div class="field"><label for="notional">Montant à payer <b id="o-notional"></b></label>
+        <input id="notional" type="number" min="1" step="0.1" value="22.6"><p class="hint">En milliards de dollars.</p></div>
+      <div class="field"><label for="spot">EUR/USD spot <b id="o-spot"></b></label>
+        <input id="spot" type="range" min="1.00" max="1.25" step="0.001" value="1.126"></div>
+      <div class="field"><label for="rusd">Taux USD (Fed) <b id="o-rusd"></b></label>
+        <input id="rusd" type="range" min="0" max="6" step="0.125" value="3.875"></div>
+      <div class="field"><label for="reur">Taux EUR (BCE, dépôt) <b id="o-reur"></b></label>
+        <input id="reur" type="range" min="0" max="5" step="0.125" value="2.5"></div>
+      <div class="field"><label for="months">Délai jusqu'au closing <b id="o-months"></b></label>
+        <input id="months" type="range" min="1" max="18" step="1" value="10"></div>
+      <div class="field"><label for="vol">Volatilité implicite EUR/USD <b id="o-vol"></b></label>
+        <input id="vol" type="range" min="3" max="15" step="0.5" value="7"></div>
+      <div class="field"><label for="pips">Coût de contingence du DCF <b id="o-pips"></b></label>
+        <input id="pips" type="range" min="0" max="150" step="5" value="50"><p class="hint">Dégradation du taux à terme demandée par la banque pour porter le risque d'annulation.</p></div>
+      <div class="derived" aria-live="polite">
+        <div><span>Taux à terme (parité des taux)</span><span id="d-fwd"></span></div>
+        <div><span>Points de terme</span><span id="d-pts"></span></div>
+        <div><span>Taux du deal-contingent</span><span id="d-dcf"></span></div>
+        <div><span>Prime de l'option (strike = terme)</span><span id="d-prem"></span></div>
+      </div>
+    </section>
+
+    <div class="right">
+      <section class="panel" aria-labelledby="h-closing">
+        <h2 id="h-closing">Scénario au closing</h2>
+        <div class="field"><label for="closing">EUR/USD le jour du paiement <b id="o-closing"></b></label>
+          <input id="closing" type="range" min="0.95" max="1.30" step="0.005" value="1.05"></div>
+        <button class="toggle" id="cancel" type="button" aria-pressed="false"><span class="dot"></span><span>Le rachat est annulé (refus d'un régulateur, vote négatif des actionnaires de PTC)</span></button>
+        <div class="verdict" id="cards" style="margin-top:14px"></div>
+        <p class="hint" id="cards-hint" style="margin-top:8px"></p>
+      </section>
+
+      <section class="panel" aria-labelledby="h-table">
+        <h2 id="h-table">Coût de l'acquisition en euros, par scénario</h2>
+        <div class="tablebox"><table id="table"></table></div>
+        <p class="hint" style="margin-top:8px">Vert : la stratégie la moins chère du scénario. Rouge : la plus chère. Ligne « Rachat annulé » : perte ou gain de la couverture seule, puisqu'il n'y a plus rien à payer.</p>
+      </section>
+    </div>
+  </div>
+
+  <section class="panel" aria-labelledby="h-chart">
+    <h2 id="h-chart">Coût en euros selon l'EUR/USD au closing</h2>
+    <div class="chartbox"><svg id="chart" viewBox="0 0 900 340" role="img" aria-label="Coût de l'acquisition en milliards d'euros selon le cours EUR/USD au closing, pour chaque stratégie"></svg></div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <section class="panel notes" aria-label="Méthode">
+    <div><h3>Le taux à terme</h3>
+      <p>Il découle de l'écart de taux, pas d'une prévision : <code>F = S × (1 + r<sub>USD</sub>·T) / (1 + r<sub>EUR</sub>·T)</code>.</p>
+      <p>Les taux américains étant plus élevés, F est au-dessus du spot : acheter des dollars à terme coûte moins cher qu'au comptant.</p></div>
+    <div><h3>L'option</h3>
+      <p>Put EUR / call USD européen, strike au niveau du terme, valorisé par Garman-Kohlhagen. Elle protège contre la baisse de l'euro et laisse profiter de sa hausse.</p>
+      <p>Si le rachat est annulé, la perte se limite à la prime.</p></div>
+    <div><h3>Le deal-contingent forward</h3>
+      <p>Un terme qui s'annule sans frais si l'acquisition n'a pas lieu. La banque porte ce risque et le facture en dégradant le taux.</p>
+      <p>C'est la seule stratégie qui protège à la fois contre l'euro faible et contre l'annulation.</p></div>
+  </section>
+
+  <footer>
+    Exercice réalisé par Hippolyte Fohr (EDHEC BBA, majeure Marchés financiers) à partir de données publiques, sans connaissance de la couverture réelle de Schneider Electric. Volatilité et coût de contingence : hypothèses. Montant : annonce du 5 octobre 2026 (<a href="https://www.connaissancedesenergies.org/afp/schneider-electric-debourse-pour-plus-de-20-milliards-deuros-pour-ptc-sa-plus-grosse-acquisition-261005" target="_blank" rel="noopener">AFP</a>). Taux directeurs : Fed 3,75–4 % (28 oct. 2026), BCE 2,50 %.
+  </footer>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const S={none:{n:"Sans couverture",c:"--s-none"},fwd:{n:"Forward",c:"--s-fwd"},opt:{n:"Option",c:"--s-opt"},dcf:{n:"Deal-contingent forward",c:"--s-dcf"}};
+const keys=["none","fwd","opt","dcf"];
+let cancelled=false;
+const fmt=(x,d=2)=>x.toLocaleString("fr-FR",{minimumFractionDigits:d,maximumFractionDigits:d});
+function ncdf(x){const t=1/(1+0.2316419*Math.abs(x)),d=0.3989423*Math.exp(-x*x/2);const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));return x>0?1-p:p}
+function params(){
+  const N=Math.max(0.1,+$("notional").value||22.6),Sp=+$("spot").value,ru=+$("rusd").value/100,re=+$("reur").value/100,T=+$("months").value/12,v=+$("vol").value/100,pips=+$("pips").value;
+  const F=Sp*(1+ru*T)/(1+re*T);
+  const K=F;
+  // Garman-Kohlhagen, put EUR (base) / call USD : domestique USD, étranger EUR
+  const d1=(Math.log(Sp/K)+(ru-re+v*v/2)*T)/(v*Math.sqrt(T)),d2=d1-v*Math.sqrt(T);
+  const putUSDperEUR=K*Math.exp(-ru*T)*ncdf(-d2)-Sp*Math.exp(-re*T)*ncdf(-d1);
+  const eurNotional=N/K; // Md EUR couverts
+  const premUSD=putUSDperEUR*eurNotional;
+  const premEUR=premUSD/Sp;
+  const D=F-pips/10000;
+  return {N,Sp,F,K,D,premEUR,T};
+}
+// coût total en Md EUR (si réalisé) ou P&L de couverture (si annulé, positif = coût)
+function cost(k,X,p,cancel){
+  if(cancel){
+    if(k==="none")return 0;
+    if(k==="fwd")return p.N/p.F-p.N/X; // achat obligé à F puis revente à X
+    if(k==="opt")return p.premEUR;
+    if(k==="dcf")return 0;
+  }
+  if(k==="none")return p.N/X;
+  if(k==="fwd")return p.N/p.F;
+  if(k==="opt")return (X<p.K?p.N/p.K:p.N/X)+p.premEUR;
+  if(k==="dcf")return p.N/p.D;
+}
+function col(k){return getComputedStyle(document.documentElement).getPropertyValue(S[k].c).trim()}
+function render(){
+  const p=params(),X=+$("closing").value;
+  $("o-notional").textContent=fmt(p.N,1)+" Md$";
+  $("o-spot").textContent=fmt(p.Sp,4);
+  $("o-rusd").textContent=fmt(+$("rusd").value,3)+" %";
+  $("o-reur").textContent=fmt(+$("reur").value,3)+" %";
+  $("o-months").textContent=$("months").value+" mois";
+  $("o-vol").textContent=fmt(+$("vol").value,1)+" %";
+  $("o-pips").textContent=$("pips").value+" pips";
+  $("o-closing").textContent=fmt(X,3);
+  $("d-fwd").textContent=fmt(p.F,4);
+  $("d-pts").textContent=(p.F>=p.Sp?"+":"")+fmt((p.F-p.Sp)*10000,0)+" pips";
+  $("d-dcf").textContent=fmt(p.D,4);
+  $("d-prem").textContent=fmt(p.premEUR*1000,0)+" M€";
+  // cartes
+  const base=p.N/p.Sp;
+  $("cards").innerHTML=keys.map(k=>{const c=cost(k,X,p,cancelled);const diff=cancelled?c:c-base;
+    const label=cancelled?(k==="fwd"&&c<0?"gain de couverture":"perte de couverture"):"vs budget au spot";
+    const val=cancelled?(c===0?"0":(c>0?"−":"+")+fmt(Math.abs(c),2)+" Md€"):fmt(c,2)+" Md€";
+    const cls=cancelled?(c>0.0005?"neg":c<-0.0005?"pos":""):(diff>0.0005?"neg":diff<-0.0005?"pos":"");
+    const deltaTxt=cancelled?label:(diff>=0?"+":"−")+fmt(Math.abs(diff)*1000,0)+" M€ "+label;
+    return `<div class="card" style="--c:var(${S[k].c})"><span class="name">${S[k].n}</span><span class="val ${cancelled?cls:""}">${val}</span><span class="delta ${cancelled?"":cls}">${deltaTxt}</span></div>`}).join("");
+  $("cards-hint").textContent=cancelled
+    ?"Le rachat n'a pas lieu : seule compte la couverture. Le forward oblige à acheter puis revendre les dollars ; le deal-contingent s'annule sans frais."
+    :`Budget de référence au spot d'aujourd'hui : ${fmt(base,2)} Md€. Un écart positif signifie que l'acquisition coûte plus cher que prévu.`;
+  // tableau
+  const sc=[["Dollar en chute",1.20],["Central",+p.F.toFixed(3)],["Euro en chute",1.05],["Ton scénario",X]];
+  let h="<thead><tr><th>Stratégie</th>"+sc.map(s=>`<th>${s[0]}<br>${fmt(s[1],3)}</th>`).join("")+"<th>Rachat annulé<br>à "+fmt(X,3)+"</th></tr></thead><tbody>";
+  const cols=sc.map(s=>keys.map(k=>cost(k,s[1],p,false)));
+  const cc=keys.map(k=>cost(k,X,p,true));cols.push(cc);
+  keys.forEach((k,i)=>{h+=`<tr><td><span class="sw" style="--c:var(${S[k].c})"></span>${S[k].n}</td>`;
+    cols.forEach((c,j)=>{const mn=Math.min(...c),mx=Math.max(...c);const cls=Math.abs(mx-mn)<1e-6?"":(Math.abs(c[i]-mn)<1e-9?"best":Math.abs(c[i]-mx)<1e-9?"worst":"");
+      const v=j===cols.length-1?(Math.abs(c[i])<1e-9?"0":(c[i]>0?"−":"+")+fmt(Math.abs(c[i]),2)):fmt(c[i],2);
+      h+=`<td class="${cls}">${v}</td>`});h+="</tr>"});
+  $("table").innerHTML=h+"</tbody><caption style='caption-side:bottom;text-align:left;font-size:12px;color:var(--muted);padding-top:6px'>En milliards d'euros.</caption>";
+  drawChart(p,X);
+}
+function drawChart(p,X){
+  const W=900,H=340,m={l:56,r:16,t:16,b:40};
+  const x0=0.95,x1=1.30;const xs=[];for(let x=x0;x<=x1+1e-9;x+=0.005)xs.push(+x.toFixed(3));
+  const series=keys.map(k=>xs.map(x=>cost(k,x,p,false)));
+  const all=series.flat();let y0=Math.floor(Math.min(...all)),y1=Math.ceil(Math.max(...all));
+  const sx=x=>m.l+(x-x0)/(x1-x0)*(W-m.l-m.r),sy=y=>H-m.b-(y-y0)/(y1-y0)*(H-m.t-m.b);
+  let g="";
+  for(let y=y0;y<=y1;y++){g+=`<line x1="${m.l}" x2="${W-m.r}" y1="${sy(y)}" y2="${sy(y)}" stroke="var(--line)"/><text x="${m.l-8}" y="${sy(y)+4}" text-anchor="end">${y} Md€</text>`}
+  for(let x=0.95;x<=1.3001;x+=0.05){g+=`<line x1="${sx(x)}" x2="${sx(x)}" y1="${H-m.b}" y2="${H-m.b+5}" stroke="var(--muted)"/><text x="${sx(x)}" y="${H-m.b+20}" text-anchor="middle">${fmt(x,2)}</text>`}
+  g+=`<text x="${(W+m.l)/2}" y="${H-4}" text-anchor="middle">EUR/USD au closing</text>`;
+  // repères spot et terme
+  [[p.Sp,"spot"],[p.F,"terme"]].forEach(([v,l])=>{if(v>=x0&&v<=x1)g+=`<line x1="${sx(v)}" x2="${sx(v)}" y1="${m.t}" y2="${H-m.b}" stroke="var(--muted)" stroke-dasharray="3 4"/><text x="${sx(v)+4}" y="${m.t+10}">${l}</text>`});
+  keys.forEach((k,i)=>{const d=series[i].map((y,j)=>(j?"L":"M")+sx(xs[j]).toFixed(1)+","+sy(y).toFixed(1)).join("");
+    g+=`<path class="line" d="${d}" fill="none" stroke="var(${S[k].c})" stroke-width="${k==="none"?2:2.5}" ${k==="none"?'stroke-dasharray="6 4"':""}/>`});
+  g+=`<line x1="${sx(X)}" x2="${sx(X)}" y1="${m.t}" y2="${H-m.b}" stroke="var(--ink)" stroke-width="1.5"/>`;
+  keys.forEach(k=>{const y=cost(k,X,p,false);g+=`<circle cx="${sx(X)}" cy="${sy(y)}" r="4.5" fill="var(${S[k].c})" stroke="var(--panel)" stroke-width="2"/>`});
+  $("chart").innerHTML=g;
+  $("legend").innerHTML=keys.map(k=>`<span><span class="sw" style="--c:var(${S[k].c})"></span>${S[k].n}</span>`).join("");
+}
+["notional","spot","rusd","reur","months","vol","pips","closing"].forEach(id=>$(id).addEventListener("input",render));
+$("cancel").addEventListener("click",()=>{cancelled=!cancelled;$("cancel").setAttribute("aria-pressed",cancelled);render()});
+render();
+</script>
+
+</html>
